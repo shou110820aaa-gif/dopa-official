@@ -7,16 +7,24 @@
 
   <style>
     :root {
-      --gold: #c9a96a;
-      --deep: #2e2e2e;
-      --bg: #f3eee6;
+      --green: #3b7f4a;
+      --green-light: #e5f3e9;
+      --deep: #263326;
+      --bg: #f4efe6;
       --white: #ffffff;
+      --border-soft: #e1d8c8;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
 
     body {
-      font-family: "Hiragino Mincho ProN", "Yu Mincho", serif;
-      margin: 0;
-      background: var(--bg);
+      font-family: -apple-system, BlinkMacSystemFont, "Hiragino Kaku Gothic ProN",
+        "Yu Gothic", "Meiryo", sans-serif;
+      background: radial-gradient(circle at top left, #faf5eb, #f2ece2);
       color: var(--deep);
       line-height: 1.8;
     }
@@ -27,10 +35,15 @@
       display: block;
     }
 
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
     header {
       background: rgba(255,255,255,0.9);
-      backdrop-filter: blur(8px);
-      border-bottom: 1px solid #d8d0c2;
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border-soft);
       position: sticky;
       top: 0;
       z-index: 100;
@@ -39,7 +52,7 @@
     .header-inner {
       max-width: 1100px;
       margin: 0 auto;
-      padding: 12px 18px;
+      padding: 10px 18px;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -55,150 +68,221 @@
     nav ul {
       list-style: none;
       display: flex;
-      gap: 14px;
-      padding: 0;
-      margin: 0;
+      gap: 12px;
       font-size: 14px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
     }
 
     nav a {
-      text-decoration: none;
-      color: var(--deep);
       padding: 4px 10px;
-      border-radius: 4px;
+      border-radius: 999px;
+      border: 1px solid transparent;
       transition: 0.2s;
-      border-bottom: 2px solid transparent;
+      background: transparent;
+      font-weight: 500;
     }
 
     nav a:hover {
-      border-bottom: 2px solid var(--gold);
+      border-color: var(--green);
+      background: var(--green-light);
     }
 
-    /* セクション */
     main {
       max-width: 1100px;
       margin: 0 auto;
-      padding: 18px;
+      padding: 16px 18px 32px;
     }
 
     section {
       background: var(--white);
-      border-radius: 12px;
-      padding: 28px 22px;
+      border-radius: 18px;
+      padding: 26px 22px;
       margin-top: 18px;
-      border: 1px solid #e5dccf;
-      box-shadow: 0 3px 16px rgba(0,0,0,0.05);
+      border: 1px solid var(--border-soft);
+      box-shadow: 0 6px 18px rgba(0,0,0,0.04);
     }
 
     .section-title {
-      font-size: 22px;
+      font-size: 21px;
       font-weight: 700;
       color: var(--deep);
-      border-left: 6px solid var(--gold);
-      padding-left: 12px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
       margin-bottom: 18px;
+    }
+
+    .section-title::before {
+      content: "";
+      width: 4px;
+      height: 22px;
+      border-radius: 999px;
+      background: var(--green);
     }
 
     /* HERO */
     .hero {
-      border-radius: 20px;
-      padding: 60px 26px;
-      color: white;
-      background: linear-gradient(
-        rgba(0,0,0,0.45),
-        rgba(0,0,0,0.55)
-      ),
-      url("hero.jpg") center/cover;
-      /* hero.jpg → 人工芝で2匹が写っている横長の写真 */
+      border-radius: 24px;
+      padding: 48px 24px;
+      margin-top: 18px;
+      color: #ffffff;
+      background:
+        linear-gradient(135deg, rgba(0,0,0,0.55), rgba(0,0,0,0.35)),
+        url("hero.jpg") center/cover no-repeat;
+      /* hero.jpg → 人工芝で2匹がこちらを見ている横長の写真 */
+      box-shadow: 0 10px 26px rgba(0,0,0,0.25);
+    }
+
+    .hero-inner {
+      max-width: 600px;
+    }
+
+    .hero-tag {
+      display: inline-block;
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.18);
+      margin-bottom: 10px;
     }
 
     .hero-title {
-      font-size: 28px;
+      font-size: 26px;
       font-weight: 800;
-      margin-bottom: 12px;
+      line-height: 1.4;
+      margin-bottom: 10px;
     }
 
-    .hero-text {
+    .hero-sub {
       font-size: 15px;
-      max-width: 600px;
+      margin-bottom: 14px;
+    }
+
+    .hero-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      font-size: 11px;
+    }
+
+    .hero-badge {
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.18);
     }
 
     /* ABOUT */
     .about-grid {
       display: grid;
-      grid-template-columns: 1.3fr 1fr;
-      gap: 22px;
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+      gap: 20px;
+      align-items: start;
+    }
+
+    .about-grid p {
+      font-size: 14px;
+    }
+
+    dl {
+      font-size: 14px;
+      margin-top: 14px;
     }
 
     dt {
-      font-weight: bold;
+      font-weight: 600;
       margin-top: 8px;
     }
 
     dd {
       margin: 0;
-      margin-bottom: 6px;
+      margin-bottom: 4px;
     }
 
-    /* 料金表画像 */
     .image-card {
-      border: 1px solid #e8ddcc;
+      border: 1px solid var(--border-soft);
       padding: 8px;
-      border-radius: 8px;
-      margin-bottom: 12px;
-      background: #fff;
+      border-radius: 14px;
+      background: #fdfbf7;
+      margin-bottom: 10px;
     }
 
     /* 預かり */
     .flex-two {
       display: grid;
-      grid-template-columns: 1.2fr 1fr;
-      gap: 16px;
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+      gap: 18px;
+      align-items: start;
+    }
+
+    .flex-two p {
+      font-size: 14px;
+    }
+
+    /* MENU */
+    .caption {
+      font-size: 11px;
+      color: #666;
+      margin-top: 4px;
     }
 
     /* ギャラリー */
     .gallery-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(160px,1fr));
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
       gap: 10px;
     }
 
     .gallery-grid img {
-      border-radius: 10px;
+      border-radius: 14px;
       object-fit: cover;
       aspect-ratio: 1/1;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.06);
     }
 
-    /* Footer */
     footer {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 8px 18px 20px;
+      font-size: 11px;
+      color: #777;
       text-align: center;
-      color: #666;
-      font-size: 12px;
-      padding: 20px 0;
     }
 
-    @media(max-width: 768px){
-      .about-grid, .flex-two {
-        grid-template-columns: 1fr;
+    @media (max-width: 768px) {
+      .header-inner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .logo {
+        width: 120px;
       }
 
       .hero {
-        padding: 40px 20px;
+        padding: 34px 18px;
       }
 
       .hero-title {
         font-size: 22px;
       }
+
+      .about-grid,
+      .flex-two {
+        grid-template-columns: 1fr;
+      }
     }
   </style>
 </head>
-
 <body>
 
 <header>
   <div class="header-inner">
-    <img src="logo.jpg" alt="DOPA ロゴ" class="logo">
+    <img src="logo.jpg" alt="DOG RUN & CAFE DOPA ロゴ" class="logo">
     <!-- logo.jpg → ロゴ画像 -->
+
     <nav>
       <ul>
         <li><a href="#home">HOME</a></li>
@@ -214,125 +298,147 @@
 
 <main>
 
-<!-- HERO -->
-<section id="home" class="hero">
-  <div class="hero-title">都会に広がる上質な室内ドッグラン</div>
-  <div class="hero-text">
-    夏の日も雨の日も雪の日も、わんちゃんと飼い主様が快適に過ごせる室内ドッグランです。 
-    カフェ・ペットホテル完備、深夜4時まで営業。
-  </div>
-</section>
-
-<!-- ABOUT -->
-<section id="about">
-  <h2 class="section-title">ABOUT - お店紹介</h2>
-
-  <div class="about-grid">
-    <div>
-      <p>
-        宮城県仙台市定禅寺通り沿いにある室内型ドッグラン。<br>
-        カフェ・ペットホテルも完備し、飼い主様とわんちゃんが同じ空間でゆったりと過ごせます。
+  <!-- HERO -->
+  <section id="home" class="hero">
+    <div class="hero-inner">
+      <div class="hero-tag">INDOOR DOG RUN & CAFE</div>
+      <h1 class="hero-title">
+        都会の真ん中に、<br>
+        わんちゃんのための“緑のひろば”を。
+      </h1>
+      <p class="hero-sub">
+        夏も冬も、雨の日も雪の日も、<br>
+        いつでものびのび遊べる室内ドッグラン＆カフェ。
       </p>
-
-      <dl>
-        <dt>住所</dt>
-        <dd>宮城県仙台市国分町2丁目15-16 デイジービルディング9F</dd>
-
-        <dt>営業時間</dt>
-        <dd>10:00〜翌4:00（不定休）</dd>
-
-        <dt>アクセス</dt> 
-        <dd>地下鉄南北線「勾当台公園駅」徒歩3分<br>近隣にコインパーキング有</dd>
-      </dl>
+      <div class="hero-badges">
+        <span class="hero-badge">室内ドッグラン</span>
+        <span class="hero-badge">ドッグカフェ</span>
+        <span class="hero-badge">ペットホテル</span>
+        <span class="hero-badge">10:00〜翌4:00 不定休</span>
+      </div>
     </div>
+  </section>
 
-    <div>
-      <img src="about.jpg" alt="店内ドッグラン">
-      <!-- about.jpg → 店内芝生の広い写真（あなたが送った4枚目あたり） -->
-    </div>
-  </div>
-</section>
+  <!-- ABOUT -->
+  <section id="about">
+    <h2 class="section-title">ABOUT - お店紹介</h2>
 
-<!-- PRICE -->
-<section id="price">
-  <h2 class="section-title">PRICE - ドッグラン料金</h2>
+    <div class="about-grid">
+      <div>
+        <p>
+          宮城県仙台市・定禅寺通り沿いにある室内型ドッグラン。<br>
+          夏の日も雨の日も雪の日も、季節や天候を気にせず、わんちゃんと飼い主様が一緒に快適に過ごせる空間です。<br>
+          ペットホテル、ドッグカフェも完備し、都会の中の“緑のひろば”のような時間をお届けします。
+        </p>
 
-  <div class="image-card">
-    <img src="price1.jpg" alt="料金表1">
-    <!-- price1.jpg → 料金表1枚目 -->
-  </div>
+        <dl>
+          <dt>住所</dt>
+          <dd>宮城県仙台市国分町2丁目15-16 デイジービルディング9F</dd>
 
-  <div class="image-card">
-    <img src="price2.jpg" alt="料金表2">
-    <!-- price2.jpg → 料金表2枚目 -->
-  </div>
-</section>
+          <dt>営業時間</dt>
+          <dd>10:00〜翌4:00（不定休）</dd>
 
-<!-- 預かり -->
-<section id="azukari">
-  <h2 class="section-title">預かりサービス</h2>
-
-  <div class="flex-two">
-
-    <div>
-      <p>
-        1時間から預かり可能。お買い物やお食事の間にご利用いただけます。 
-        預かり中はスタッフがドッグラン内で遊ばせながらお迎えをお待ちします。 
-        個室でのお預かりにも対応しています。
-      </p>
-    </div>
-
-    <div>
-      <div class="image-card">
-        <img src="azukari1.jpg" alt="預かり風景1">
-        <!-- azukari1.jpg → 人工芝の上でくつろぐ2匹の写真 -->
+          <dt>アクセス</dt>
+          <dd>
+            仙台市地下鉄南北線「勾当台公園駅」徒歩3分<br>
+            近隣にコインパーキング有
+          </dd>
+        </dl>
       </div>
 
       <div class="image-card">
-        <img src="azukari2.jpg" alt="預かり風景2">
-        <!-- azukari2.jpg → 個室で2匹の写真 -->
+        <img src="about.jpg" alt="店内ドッグランの様子">
+        <!-- about.jpg → 店内の広い芝エリアの写真 -->
       </div>
     </div>
+  </section>
 
-  </div>
-</section>
+  <!-- PRICE -->
+  <section id="price">
+    <h2 class="section-title">PRICE - ドッグラン料金</h2>
 
-<!-- MENU -->
-<section id="menu">
-  <h2 class="section-title">MENU - フード & ドリンク</h2>
+    <div class="image-card">
+      <img src="price1.jpg" alt="ドッグラン料金表1">
+      <!-- price1.jpg → 料金表1枚目 -->
+    </div>
 
-  <div class="image-card">
-    <img src="menu.jpg" alt="メニュー画像">
-    <!-- menu.jpg → 添付のフード・ドリンクメニュー（1枚の大きい画像） -->
-  </div>
-</section>
+    <div class="image-card">
+      <img src="price2.jpg" alt="ドッグラン料金表2">
+      <!-- price2.jpg → 料金表2枚目 -->
+    </div>
+  </section>
 
-<!-- ギャラリー -->
-<section id="gallery">
-  <h2 class="section-title">GALLERY - 店内ギャラリー</h2>
+  <!-- 預かり -->
+  <section id="azukari">
+    <h2 class="section-title">預かりサービス</h2>
 
-  <div class="gallery-grid">
+    <div class="flex-two">
+      <div>
+        <p>
+          1時間からご利用いただける預かりサービスです。<br>
+          お買い物やお食事、ちょっとしたお出かけの間も、安心してお任せください。<br>
+          預かり中はスタッフがドッグラン内で遊ばせながらお迎えをお待ちし、個室でのお預かりにも対応しています。
+        </p>
+      </div>
 
-    <img src="g1.jpg" alt="ギャラリー1">
-    <!-- g1.jpg → 立っている2匹の芝生写真 -->
+      <div>
+        <div class="image-card">
+          <img src="azukari1.jpg" alt="ドッグランでくつろぐわんちゃんたち">
+          <!-- azukari1.jpg → 芝生の上でくつろぐ2匹の写真 -->
+        </div>
 
-    <img src="g2.jpg" alt="ギャラリー2">
-    <!-- g2.jpg → テーブル席の写真 -->
+        <div class="image-card">
+          <img src="azukari2.jpg" alt="個室で過ごすわんちゃんたち">
+          <!-- azukari2.jpg → 個室で2匹がこちらを見ている写真 -->
+        </div>
+      </div>
+    </div>
+  </section>
 
-    <img src="g3.jpg" alt="ギャラリー3">
-    <!-- g3.jpg → バーカウンター写真 -->
+  <!-- MENU -->
+  <section id="menu">
+    <h2 class="section-title">MENU - フード & ドリンク</h2>
 
-    <img src="g4.jpg" alt="ギャラリー4">
-    <!-- g4.jpg → 広い芝生全体写真 -->
+    <p style="font-size:14px; margin-bottom:10px;">
+      飼い主様向けのフード・ドリンクはもちろん、わんちゃん用メニューもご用意しています。<br>
+      一緒にカフェタイムをお楽しみください。
+    </p>
 
-    <img src="g5.jpg" alt="ギャラリー5">
-    <!-- g5.jpg → 白いポメアップ写真 -->
+    <div class="image-card">
+      <img src="menu.jpg" alt="DOG RUN & CAFE DOPA メニュー">
+      <!-- menu.jpg → 添付のメニュー画像 -->
+      <p class="caption">FOOD / ALCOHOL / SWEETS / DOG メニュー</p>
+    </div>
+  </section>
 
-    <img src="g6.jpg" alt="ギャラリー6">
-    <!-- g6.jpg → 個室２匹写真 -->
+  <!-- GALLERY -->
+  <section id="gallery">
+    <h2 class="section-title">GALLERY - 店内ギャラリー</h2>
 
-  </div>
-</section>
+    <p style="font-size:14px; margin-bottom:10px;">
+      店内の雰囲気や、わんちゃんたちの様子を写真でご紹介します。
+    </p>
+
+    <div class="gallery-grid">
+      <img src="g1.jpg" alt="人工芝でこちらを見る2匹">
+      <!-- g1.jpg → 立っている2匹の芝生写真 -->
+
+      <img src="g2.jpg" alt="テーブル席の様子">
+      <!-- g2.jpg → テーブル席の写真 -->
+
+      <img src="g3.jpg" alt="バーカウンターとボトル棚">
+      <!-- g3.jpg → バーカウンター写真 -->
+
+      <img src="g4.jpg" alt="広い芝生エリア">
+      <!-- g4.jpg → 広い芝生全体写真 -->
+
+      <img src="g5.jpg" alt="白いポメラニアンのアップ">
+      <!-- g5.jpg → 白いポメアップ写真 -->
+
+      <img src="g6.jpg" alt="個室でくつろぐ2匹">
+      <!-- g6.jpg → 個室２匹写真 -->
+    </div>
+  </section>
 
 </main>
 
