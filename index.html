@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>DOG RUN & CAFE DOPA | 公式サイトデザイン案</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    :root {
+      --green: #4CAF50;
+      --dark: #333333;
+      --light-wood: #f6e7c9;
+      --white: #ffffff;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Hiragino Kaku Gothic ProN",
+        "Yu Gothic", "Meiryo", sans-serif;
+      background: var(--light-wood);
+      color: var(--dark);
+      line-height: 1.8;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* ヘッダー */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid #e0d0b5;
+    }
+
+    .header-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 8px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .logo-area {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .logo-area img {
+      width: 110px;
+      border-radius: 4px;
+    }
+
+    .site-title {
+      font-size: 15px;
+      font-weight: 600;
+      line-height: 1.4;
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 12px;
+      font-size: 13px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    nav a {
+      padding: 4px 8px;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      transition: 0.2s;
+      white-space: nowrap;
+    }
+
+    nav a:hover {
+      border-color: var(--green);
+      background: #e7f6ea;
+    }
+
+    /* セクション共通 */
+    main {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 16px;
+    }
+
+    section {
+      background: rgba(255, 255, 255, 0.96);
+      border-radius: 16px;
+      padding: 24px 20px;
+      margin-top: 16px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+    }
+
+    section:nth-of-type(even) {
+      background: #fffaf2;
+    }
+
+    .section-title {
+      font-size: 20px;
+      font-weight: 700;
+      border-left: 6px solid var(--green);
+      padding-left: 10px;
+      margin-bottom: 16px;
+    }
+
+    /* ヒーロー */
+    .hero {
+      margin-top: 16px;
+      background: linear-gradient(
+          135deg,
+          rgba(76, 175, 80, 0.35),
+          rgba(0, 0, 0, 0.45)
+        ),
+        url("hero-dogrun.jpg") center/cover no-repeat;
+      /* hero-dogrun.jpg → 人工芝で2匹が写っている写真（横長） */
+      border-radius: 24px;
+      color: #fff;
+      padding: 40px 20px;
+      min-height: 240px;
+      display: flex;
+      align-items: center;
+    }
+
+    .hero-inner {
+      max-width: 520px;
+    }
+
+    .hero-tag {
+      display: inline-block;
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.2);
+      margin-bottom: 12px;
+    }
+
+    .hero h1 {
+      font-size: 24px;
+      margin-bottom: 8px;
+    }
+
+    .hero-lead {
+      font-size: 14px;
+      margin-bottom: 16px;
+    }
+
+    .hero-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      font-size: 11px;
+    }
+
+    .hero-badge {
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+    /* ABOUT */
+    .about-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+      gap: 20px;
+    }
+
+    .about-text p + p {
+      margin-top: 4px;
+    }
+
+    .about-info {
+      margin-top: 16px;
+      font-size: 14px;
+    }
+
+    .about-info dt {
+      font-weight: 600;
+      margin-top: 8px;
+    }
+
+    .about-info dd {
+      margin-left: 0;
+    }
+
+    .about-photo {
+      border-radius: 14px;
+      overflow: hidden;
+    }
+
+    /* 料金表・MENUの画像 */
+    .image-card {
+      background: #ffffff;
+      border-radius: 14px;
+      padding: 12px;
+      border: 1px solid #f0e0c0;
+    }
+
+    .image-card + .image-card {
+      margin-top: 12px;
+    }
+
+    .image-caption {
+      font-size: 11px;
+      color: #666;
+      margin-top: 4px;
+    }
+
+    /* 預かり */
+    .flex-two {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+      gap: 16px;
+      align-items: start;
+    }
+
+    .list-dots {
+      margin-top: 8px;
+      padding-left: 1.2em;
+      font-size: 14px;
+    }
+
+    .list-dots li {
+      margin-bottom: 4px;
+    }
+
+    /* ギャラリー */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 10px;
+    }
+
+    .gallery-grid img {
+      border-radius: 12px;
+      object-fit: cover;
+      aspect-ratio: 4 / 3;
+    }
+
+    /* フッター */
+    footer {
+      max-width: 1100px;
+      margin: 16px auto 24px;
+      padding: 12px 16px;
+      font-size: 11px;
+      color: #666;
+      text-align: center;
+    }
+
+    /* スマホ対応 */
+    @media (max-width: 768px) {
+      .header-inner {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .logo-area img {
+        width: 100px;
+      }
+
+      .hero {
+        padding: 28px 16px;
+        min-height: 220px;
+      }
+
+      .hero h1 {
+        font-size: 20px;
+      }
+
+      .about-grid,
+      .flex-two {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="header-inner">
+      <div class="logo-area">
+        <img src="logo-dopa.jpg" alt="DOG RUN & CAFE DOPA ロゴ">
+        <!-- logo-dopa.jpg → 添付のロゴ画像 -->
+        <div class="site-title">
+          室内型 DOG RUN & CAFE DOPA<br>
+          定禅寺通り沿いのドッグラン & カフェ
+        </div>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="#home">HOME</a></li>
+          <li><a href="#about">ABOUT</a></li>
+          <li><a href="#price">料金表</a></li>
+          <li><a href="#azukari">預かり</a></li>
+          <li><a href="#menu">MENU</a></li>
+          <li><a href="#gallery">ギャラリー</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- HOME / HERO -->
+    <div id="home" class="hero">
+      <div class="hero-inner">
+        <div class="hero-tag">INDOOR DOG RUN & CAFE</div>
+        <h1>都会の中の「公園」のような<br>DOG RUN & CAFE</h1>
+        <p class="hero-lead">
+          宮城県仙台市・定禅寺通り沿いの室内型ドッグラン＆カフェ。<br>
+          雨の日も雪の日も、季節や天候を気にせず、わんちゃんとのびのび遊べます。
+        </p>
+        <div class="hero-badges">
+          <span class="hero-badge">室内ドッグラン</span>
+          <span class="hero-badge">ペットホテル</span>
+          <span class="hero-badge">ドッグカフェ</span>
+          <span class="hero-badge">10:00〜翌4:00 営業</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ABOUT -->
+    <section id="about">
+      <h2 class="section-title">ABOUT - お店紹介</h2>
+      <div class="about-grid">
+        <div class="about-text">
+          <p>
+            宮城県仙台市定禅寺通り沿いにある室内形ドッグラン！<br>
+            ペットホテル、ドッグカフェ完備！<br>
+            飼い主様とわんちゃんが一緒にお食事を楽しめます！
+          </p>
+
+          <dl class="about-info">
+            <dt>住所</dt>
+            <dd>宮城県仙台市国分町2丁目15-16 デイジービルディング9F</dd>
+
+            <dt>営業時間</dt>
+            <dd>10:00〜翌4:00（不定休）</dd>
+
+            <dt>アクセス</dt>
+            <dd>仙台市地下鉄南北線「勾当台公園駅」徒歩3分<br>
+              近隣にコインパーキング有</dd>
+          </dl>
+        </div>
+
+        <div class="about-photo">
+          <img src="dogrun-main.jpg" alt="DOG RUN & CAFE DOPA 店内ドッグランの様子">
+          <!-- dogrun-main.jpg → 人工芝で2匹がこちらを見ている写真 -->
+        </div>
+      </div>
+    </section>
+
+    <!-- 料金表 -->
+    <section id="price">
+      <h2 class="section-title">PRICE - ドッグラン料金表</h2>
+      <p style="font-size:14px; margin-bottom:10px;">
+        会員様・ビジター様向けのドッグラン料金、およびご利用時の注意事項です。
+        詳細は店頭でもご案内しております。
+      </p>
+
+      <div class="image-card">
+        <img src="price-dogrun-1.jpg" alt="ドッグラン料金表（Member / Visitor）">
+        <!-- price-dogrun-1.jpg → 添付の料金表1枚目 -->
+        <div class="image-caption">ドッグラン会員・ビジター料金</div>
+      </div>
+
+      <div class="image-card">
+        <img src="price-dogrun-2.jpg" alt="ドッグラン料金の注意事項など">
+        <!-- price-dogrun-2.jpg → 添付の料金表2枚目 -->
+        <div class="image-caption">ご利用にあたってのご案内</div>
+      </div>
+    </section>
+
+    <!-- 預かり -->
+    <section id="azukari">
+      <h2 class="section-title">預かりサービス</h2>
+      <div class="flex-two">
+        <div>
+          <p>
+            1時間から預かり可能！お買い物やお食事など、ちょっとしたお出かけの間にご利用いただけます。
+          </p>
+          <ul class="list-dots">
+            <li>10時〜翌4時の間であれば、いつでもチェックイン・アウト可能</li>
+            <li>預かり時は従業員がドッグラン内で遊ばせながら飼い主様をお待ちします</li>
+            <li>個室でお預かりすることも可能です</li>
+          </ul>
+
+          <p style="font-size:14px; margin-top:12px;">
+            詳しい料金は上記ドッグラン料金表・店頭スタッフまでお気軽にお問合せください。
+          </p>
+        </div>
+
+        <div>
+          <div class="image-card">
+            <img src="azukari-run.jpg" alt="ドッグラン内でくつろぐわんちゃん">
+            <!-- azukari-run.jpg → 人工芝の上で2匹が寝そべっている写真 -->
+          </div>
+          <div class="image-card" style="margin-top:10px;">
+            <img src="azukari-room.jpg" alt="個室で待つわんちゃん">
+            <!-- azukari-room.jpg → 個室スペースで2匹がこちらを見ている写真 -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MENU -->
+    <section id="menu">
+      <h2 class="section-title">MENU - フード & ドリンク</h2>
+      <p style="font-size:14px; margin-bottom:10px;">
+        飼い主様向けのフード・ドリンクはもちろん、わんちゃん用メニューもご用意しています。
+        一緒にカフェタイムをお楽しみください。
+      </p>
+      <div class="image-card">
+        <img src="menu-main.jpg" alt="DOG RUN & CAFE DOPA メニュー表">
+        <!-- menu-main.jpg → 添付のメニュー画像3枚目 -->
+        <div class="image-caption">FOOD / ALCOHOL / SWEETS / DOG メニュー</div>
+      </div>
+    </section>
+
+    <!-- ギャラリー -->
+    <section id="gallery">
+      <h2 class="section-title">GALLERY - 店内ギャラリー</h2>
+      <p style="font-size:14px; margin-bottom:10px;">
+        店内の雰囲気や、わんちゃんたちの様子を写真でご紹介します。
+      </p>
+      <div class="gallery-grid">
+        <img src="gallery-run-1.jpg" alt="人工芝のドッグランとわんちゃん">
+        <!-- gallery-run-1.jpg → 2匹が立っている人工芝写真 -->
+        <img src="gallery-bar.jpg" alt="カウンターとカフェスペース">
+        <!-- gallery-bar.jpg → バーカウンターの写真 -->
+        <img src="gallery-run-2.jpg" alt="ドッグランでくつろぐわんちゃん">
+        <!-- gallery-run-2.jpg → 広い芝の上で寝そべっている写真 -->
+        <img src="gallery-azukari.jpg" alt="預かりスペースの様子">
+        <!-- gallery-azukari.jpg → 小部屋にいる2匹の写真 -->
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    &copy; DOG RUN & CAFE DOPA / 室内型DOG RUN & CAFE DOPA 定禅寺
+  </footer>
+</body>
+</html>
